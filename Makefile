@@ -1,4 +1,4 @@
-# Per-repo Makefile contract (per zero-day-ai polyrepo convention).
+# Per-repo Makefile contract (per zeroroot-ai polyrepo convention).
 # Targets: build / test / test-race / check / image (n/a here).
 
 .PHONY: build test test-race check fmt vet lint

@@ -1,3 +1,3 @@
-module github.com/zero-day-ai/testfixtures
+module github.com/zeroroot-ai/testfixtures
 
 go 1.23
