@@ -18,5 +18,5 @@ dist/
 *.swp
 .DS_Store
 
-# Workspaces (per zero-day-ai workspace convention)
+# Workspaces (per the workspace convention)
 .worktrees/
