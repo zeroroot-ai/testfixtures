@@ -10,7 +10,7 @@ Canonical test fakes shared across the workspace (`github.com/zeroroot-ai/testfi
 
 ## Architecture
 
-Per-domain packages (`authz/`, `fga/`, `audit/`, `tenant/`, `spiffe/`) each export a fake plus a `var _ RealInterface = (*fakeX)(nil)` assertion so the fake breaks the build if the real interface drifts. **Public** repo in the open Apache-2.0 tier (alongside `ast-checks`) and a gibson test dependency, so it must stay importable from the Apache layer.
+Per-domain packages (`authz/`, `fga/`, `audit/`, `tenant/`, `spiffe/`) each export a fake plus a `var _ RealInterface = (*fakeX)(nil)` assertion so the fake breaks the build if the real interface drifts. **Public** repo under the Elastic License 2.0, and a gibson test dependency. The Elastic License 2.0 is source-available, not open source, so the permissive tier (`sdk`, `adk`, `setec`, `ast-checks`) must not import it.
 
 ## Regen commands
 
@@ -24,7 +24,6 @@ make check        # fmt vet test-race
 ## Gotchas
 
 - A fake silently passing a stale interface is the failure mode the compile-time assertions exist to prevent — never delete the `var _ Real = (*fake)(nil)` lines.
-- Apache-2.0 licensed: keep it free of any ELv2/closed dependency so the open layer can import it.
 
 ## Links
 
