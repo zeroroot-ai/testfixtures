@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: Elastic-2.0
 // Copyright 2026 Zero Root AI
 
-// Package fga provides FakeStore — an in-memory OpenFGA-like store
-// for tests. Slice 5.4.
+// Package fga provides FakeStore, an in-memory OpenFGA-like tuple store for
+// tests. gibson's harness tests back a test Authorizer with it.
 package fga
 
 import (
@@ -10,7 +10,8 @@ import (
 	"sync"
 )
 
-// Tuple is the (user, relation, object) triple OpenFGA-style.
+// Tuple is the (user, relation, object) triple, OpenFGA-style. It is the map
+// key of the store, so all three fields take part in Check.
 type Tuple struct {
 	User     string
 	Relation string
@@ -50,22 +51,4 @@ func (f *FakeStore) Check(ctx context.Context, t Tuple) (bool, error) {
 	defer f.mu.Unlock()
 	_, ok := f.tuples[t]
 	return ok, nil
-}
-
-// Tuples returns a snapshot of all tuples (order not guaranteed).
-func (f *FakeStore) Tuples() []Tuple {
-	f.mu.Lock()
-	defer f.mu.Unlock()
-	out := make([]Tuple, 0, len(f.tuples))
-	for t := range f.tuples {
-		out = append(out, t)
-	}
-	return out
-}
-
-// Reset clears all tuples.
-func (f *FakeStore) Reset() {
-	f.mu.Lock()
-	defer f.mu.Unlock()
-	f.tuples = make(map[Tuple]struct{})
 }

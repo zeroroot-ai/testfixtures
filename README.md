@@ -1,6 +1,8 @@
 # testfixtures
 
-Canonical test fakes shared across the workspace (fakeAuthorizer, fakeFGAStore, fakeAuditEmitter, fakeTenantClient, fakeSPIFFEBundle). Each fake compile-time-asserts its real-interface conformance.
+Test fakes shared across the zeroroot-ai workspace. The module holds one fake today, `fga.FakeStore`, an in-memory OpenFGA-like tuple store. gibson's harness tests back a test `Authorizer` with it.
+
+A fake lives here only while a consumer in another repository reads it. `make lint-unwired` measures that surface and `.unwired-baseline.txt` names the consumer of each entry. Issue #10 is the standing tracker.
 
 Go module under the zeroroot-ai workspace. See [`zeroroot-ai/.github` → `AGENTS.md`](https://github.com/zeroroot-ai/.github/blob/main/AGENTS.md) for workflow conventions (branching, PRs, releases, agent merge autonomy).
 
