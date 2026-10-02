@@ -23,6 +23,14 @@ jobs:
       - run: go build ./...
       - run: go test -race ./...
 
+      # #10: the standing tracker for declarations nothing reads. The baseline
+      # only shrinks, so adding one fails here. The self-test proves the step
+      # can fail and names the planted declaration.
+      - name: lint-unwired
+        run: make lint-unwired
+      - name: lint-unwired-selftest
+        run: make lint-unwired-selftest
+
   govulncheck:
     name: govulncheck
     runs-on: ubuntu-latest
