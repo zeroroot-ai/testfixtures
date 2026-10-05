@@ -31,5 +31,3 @@ make lint-unwired-write    # re-measure #10; put the # consumer lines back befor
 
 - Org-level workflow: [`AGENTS.md`](https://github.com/zeroroot-ai/.github/blob/main/AGENTS.md)
 - Workspace map: workspace `CLAUDE.md`
-- Open-core licensing: ``docs/architecture/open-core/`` (local docs → `architecture/open-core`)
-- PR checklist: ``docs/agents/pr-checklist.md`` (local docs → `agents/pr-checklist.md`)
